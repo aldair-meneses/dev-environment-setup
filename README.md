@@ -28,5 +28,7 @@ Pós instalação do Docker Engine: https://docs.docker.com/engine/install/linux
 Utilize o comando ```firefox -p``` para pode adicionar o profile switcher e crie os perfís necessários.
 
 ## Softwares que costumo utilizar
+- Flatpak: ```sudo apt install flatpak```
+- Curl: ```sudo apt install curl```
 - Discord: https://discord.com/
 - Telegram: ```sudo apt install telegram-desktop```
