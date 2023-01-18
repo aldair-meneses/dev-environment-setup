@@ -11,7 +11,7 @@ Documentation of step-by-step to setup my enviroment setup
 - Chrome: https://www.google.com/intl/pt-BR/chrome/
 - Instale o gerenciador de senha. 
 - Code-insiders: https://code.visualstudio.com/insiders/ 
-- Symbol link para o code: ```sudo ln -s /usr/share/code-insiders/bin/code-insiders /usr/bin/code
+- Symbol link para o code: ```sudo ln -s /usr/share/code-insiders/bin/code-insiders /usr/bin/code```
 - RocketChat: https://github.com/RocketChat/Rocket.Chat.Electron/releases
 
 ## Crie um ssh para o novo sistema
