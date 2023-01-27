@@ -1,5 +1,5 @@
 # Ubuntu pós instalação
-O que fazer logo logo após instala o Ubuntu no meu sistema? 
+Descrição passo a passo do que faço logo após instalar o Ubuntu na minha máquina 
 
 ## Primeiros softwares e passos
 - Ative o focus follows mouse: ```gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'```
