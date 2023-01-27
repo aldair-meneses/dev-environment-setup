@@ -1,6 +1,5 @@
-# Ubuntu-post-installation
-Documentation of step-by-step to setup my enviroment setup 
-
+# Ubuntu pós instalação
+O que fazer logo logo após instala o Ubuntu no meu sistema? 
 
 ## Primeiros softwares e passos
 - Ative o focus follows mouse: ```gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'```
