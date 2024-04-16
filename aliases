@@ -1,0 +1,27 @@
+# Kills all running Docker containers
+alias docker-kill='docker kill $(docker ps -q)'
+
+# Copies the input to the clipboard
+alias cpcb='xclip -selection clipboard'
+
+# Downloads the latest Discord package for Linux, installs it using dpkg, and removes the downloaded package
+alias discord-update='
+  wget "https://discord.com/api/download?platform=linux&format=deb" -O ~/Downloads/discord-update.deb;
+  sudo dpkg -i ~/Downloads/discord-update.deb;
+  rm ~/Downloads/discord-update.deb;'
+
+# Converts input text to uppercase
+uppercase() {
+  echo "$@" | awk '{print toupper($0)}'
+}
+
+# Disables the webcam by unloading the uvcvideo kernel module
+alias disable-wc='sudo modprobe -r uvcvideo'
+
+# Enables the webcam by loading the uvcvideo kernel module
+alias enable-wc='sudo modprobe -a uvcvideo'
+
+# Retrieves the IP address of a Docker container by its name or ID
+alias docker-ip="docker inspect \
+  -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}} $1'"
+
