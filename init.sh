@@ -12,7 +12,7 @@ if ! command -v gum &>/dev/null; then
 	sudo apt update && sudo apt install gum -y
 fi
 
-CHOICE=$(gum choose "Install Essentials" "Setup Lazyvim" "Setup Alacritty" "Quit")
+CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Quit")
 
 if [ "$CHOICE" == "Install Essentials" ]; then
 	gum spin -s line --title "Installing Essentials" -- sleep 1
@@ -29,4 +29,9 @@ if [ "$CHOICE" == "Setup Alacritty" ]; then
 	APP=alacritty
 	gum confirm "Do you want to install alacritty and its dependencies?" &&
 		source ./apps/$APP/$APP.sh
+fi
+
+if [ "$CHOICE" == "Installing Apps" ]; then
+	gum spin -s line --title "Installing Apps" -- sleep 1
+	for script in ./apps/*.sh; do source $script; done
 fi
