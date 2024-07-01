@@ -9,9 +9,9 @@ if [ -d "$NEOVIM_CONFIG_PATH.bak" ]; then
 		rm -r $NEOVIM_CONFIG_PATH.bak || mv "$NEOVIM_CONFIG_PATH.bak"{,.bak}
 fi
 
-if [ -n "$NEOVIM_CONFIG_PATH" ]; then
+if [ -n "$NEOVIM_CONFIG_PATH" ] && [ -d "$NEOVIM_CONFIG_PATH" ] ; then
 	mv "$NEOVIM_CONFIG_PATH"{,.bak}
 fi
 
-git clone https://github.com/LazyVim/starter ~/.config/nvim &&
-	rm -rf ~/.config/nvim/.git
+git clone https://github.com/LazyVim/starter ~/.config/nvim &&\
+rm -rf ~/.config/nvim/.git
