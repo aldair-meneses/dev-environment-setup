@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+CONFIG_DIR="./configs"
+THEME_DIR="./themes"
+
 if ! command -v gum &>/dev/null; then
 	echo "Gum.sh will be installed"
 	echo "Updating packages..."
@@ -13,6 +16,10 @@ if ! command -v gum &>/dev/null; then
 fi
 
 CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Quit")
+
+if [ "$CHOICE" == "Quit" ]; then
+	exit 0
+fi
 
 if [ "$CHOICE" == "Install Essentials" ]; then
 	gum spin -s line --title "Installing Essentials" -- sleep 1
