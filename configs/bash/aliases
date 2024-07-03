@@ -1,0 +1,4 @@
+alias ls='eza --icons'
+alias ll='eza -A --group-directories-first --icons'
+alias la='eza -A --icons'
+alias l='eza --classify --grid --group-directories-first --icons'
