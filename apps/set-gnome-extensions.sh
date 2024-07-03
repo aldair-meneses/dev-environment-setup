@@ -1,7 +1,7 @@
 if ! command -v pipx &>/dev/null; then
 	echo "pipx not found, it will be installed bofore proceeding with gext installation"
 	sudo apt update
-	sudo apt install pipx gnome-tweak-tools -y
+	sudo apt install pipx gnome-tweaks -y
 fi
 
 pipx ensurepath
