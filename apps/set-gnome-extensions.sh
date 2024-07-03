@@ -4,12 +4,12 @@ if ! command -v pipx &>/dev/null; then
 	sudo apt install pipx gnome-tweaks -y
 fi
 
-pipx ensurepath
-
 if ! command -v gext &>/dev/null; then
 	echo "installing gnome-extensions-cli"
 	bash -c "pipx install gnome-extensions-cli --system-site-packages"
 fi
+
+export PATH=$HOME/.local/bin:$PATH
 
 gnome-extensions disable tiling-assistant@ubuntu.com
 gnome-extensions disable ubuntu-dock@ubuntu.com
