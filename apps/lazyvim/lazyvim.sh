@@ -2,7 +2,7 @@
 
 gum spin --spinner dot --title "Installing Lazyvim requirements..." -- sleep 1
 
-sudo apt install fzf fd-find neovim ripgrep fonts-firacode -y
+sudo apt install fzf fd-find ripgrep fonts-firacode -y
 
 CURRENT_PATH="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 NEOVIM_CONFIG_PATH="$HOME/.config/nvim"
