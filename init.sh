@@ -27,7 +27,10 @@ fi
 
 function init() {
 
-  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Setup Progamming Languages" "Quit")
+  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim"\
+	  "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings"\
+	  "Quit"
+  )
 
   if [ "$CHOICE" == "Quit" ]; then
     exit 0
@@ -51,6 +54,12 @@ function init() {
     gum confirm "Do you want to install alacritty and its dependencies?" &&
       source ./apps/$APP/$APP.sh
     init
+  fi
+  
+  if [ "$CHOICE" == "Setup Gnome Keybindings" ]; then
+    APP=alacritty
+    gum confirm "Do you want to set Gnome Keybindings?" &&
+      source $CONFIG_DIR/gnome/*.sh || init
   fi
 
   if [ "$CHOICE" == "Setup Progamming Languages" ]; then
