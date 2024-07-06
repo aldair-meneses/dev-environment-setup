@@ -27,7 +27,7 @@ fi
 
 function init() {
 
-  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Quit")
+  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Quit" "Setup Progamming Languages")
 
   if [ "$CHOICE" == "Quit" ]; then
     exit 0
@@ -53,11 +53,18 @@ function init() {
     init
   fi
 
+  if [ "$CHOICE" == "Setup Progamming Languages" ]; then
+    gum spin -s line --title "Installing Progamming Languages" -- sleep 1
+    for script in ./programming/languages/*.sh; do source $script; done
+    init
+  fi
+
   if [ "$CHOICE" == "Installing Apps" ]; then
     gum spin -s line --title "Installing Apps" -- sleep 1
     for script in ./apps/*.sh; do source $script; done
     init
   fi
+
 }
 
 init
