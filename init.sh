@@ -27,7 +27,7 @@ fi
 
 function init() {
 
-  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Quit" "Setup Progamming Languages")
+  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" "Setup Alacritty" "Setup Progamming Languages" "Quit")
 
   if [ "$CHOICE" == "Quit" ]; then
     exit 0
