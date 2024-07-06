@@ -1,12 +1,12 @@
 if ! command -v pipx &>/dev/null; then
-	echo "pipx not found, it will be installed bofore proceeding with gext installation"
-	sudo apt update
-	sudo apt install pipx gnome-tweaks -y
+  echo "pipx not found, it will be installed bofore proceeding with gext installation"
+  sudo apt update
+  sudo apt install pipx gnome-tweaks -y
 fi
 
 if ! command -v gext &>/dev/null; then
-	echo "installing gnome-extensions-cli"
-	bash -c "pipx install gnome-extensions-cli --system-site-packages"
+  echo "installing gnome-extensions-cli"
+  bash -c "pipx install gnome-extensions-cli --system-site-packages"
 fi
 
 export PATH=$HOME/.local/bin:$PATH
@@ -22,3 +22,5 @@ bash -c "gext install tactile@lundal.io"
 bash -c "gext install just-perfection-desktop@just-perfection"
 bash -c "gext install blur-my-shell@aunetx"
 bash -c "gext install space-bar@luchrioh"
+bash -c "gext install focus-changer@heartmire"
+
