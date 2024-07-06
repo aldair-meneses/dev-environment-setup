@@ -11,7 +11,6 @@ fi
 user_path_string=$(sed '2!d' ./configs/bash/user_local_path)
 if ! grep -q "$user_path_string" ~/.bashrc; then
   cat "$CONFIG_DIR"/bash/user_local_path >>~/.bashrc
-  export $user_path_string
 fi
 
 if ! command -v gum &>/dev/null; then
