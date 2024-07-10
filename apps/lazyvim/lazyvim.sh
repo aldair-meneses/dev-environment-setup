@@ -3,6 +3,7 @@
 gum spin --spinner dot --title "Installing Lazyvim requirements..." -- sleep 1
 
 sudo apt install fzf fd-find ripgrep fonts-firacode -y
+gsettings set org.gnome.desktop.interface font-name "FiraCode Nerd Font 11"
 
 CURRENT_PATH="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 NEOVIM_CONFIG_PATH="$HOME/.config/nvim"
