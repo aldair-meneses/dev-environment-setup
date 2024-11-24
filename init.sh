@@ -3,14 +3,15 @@ set -e
 
 DISTROS=("Ubuntu" "Debian GU/Linux")
 
-CONFIG_DIR="./configs"
-THEME_DIR="./themes"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-for DISTRO in "${DISTROS[@]}"
-do    
-   if [ "$(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=)" = "$DISTRO" ]; then
-       eval "$(cat ~/.bashrc | tail +10)"
-    fi
+CONFIG_DIR="${SCRIPT_DIR}/configs"
+THEME_DIR="${SCRIPT_DIR}/themes"
+
+for DISTRO in "${DISTROS[@]}"; do
+  if [ "$(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=)" = "$DISTRO" ]; then
+    eval "$(cat ~/.bashrc | tail +10)"
+  fi
 done
 
 user_path_string=$(sed '2!d' ./configs/bash/user_local_path)
@@ -32,9 +33,10 @@ fi
 
 function init() {
 
-  CHOICE=$(gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim"\
-	  "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings"\
-	  "Quit"
+  CHOICE=$(
+    gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" \
+      "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings" \
+      "Quit"
   )
 
   if [ "$CHOICE" == "Quit" ]; then
@@ -60,7 +62,7 @@ function init() {
       source ./apps/$APP/$APP.sh
     init
   fi
-  
+
   if [ "$CHOICE" == "Setup Gnome Keybindings" ]; then
     APP=alacritty
     gum confirm "Do you want to set Gnome Keybindings?" &&
