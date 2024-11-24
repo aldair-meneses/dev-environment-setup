@@ -3,4 +3,6 @@ sudo apt install -y \
   libssl-dev libreadline-dev zlib1g-dev libyaml-dev libreadline-dev \
   libncurses5-dev libffi-dev libgdbm-dev libjemalloc2 \
   libvips imagemagick libmagickwand-dev mupdf mupdf-tools \
-  sqlite3 libsqlite3-0 plocate neovim tree libegl1-mesa-dev
+  sqlite3 libsqlite3-0 plocate neovim tree libegl1-mesa-dev cmake g++
+pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev \ 
+libxkbcommon-dev python3
