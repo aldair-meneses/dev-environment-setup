@@ -34,7 +34,7 @@ fi
 function init() {
 
   CHOICE=$(
-    gum choose "Install Essentials" "Installing Apps" "Setup Lazyvim" \
+    gum choose "Install Essentials" "Setup Fonts" "Installing Apps" "Setup Lazyvim" \
       "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings" \
       "Quit"
   )
@@ -46,6 +46,12 @@ function init() {
   if [ "$CHOICE" == "Install Essentials" ]; then
     gum spin -s line --title "Installing Essentials" -- sleep 1
     source ./libs/essentials.sh
+    init
+  fi
+
+  if [ "$CHOICE" == "Setup Fonts" ]; then
+    gum spin -s line --title "Installing fonts" -- sleep 1
+    source ./fonts/install.sh
     init
   fi
 
