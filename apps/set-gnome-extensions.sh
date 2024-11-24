@@ -11,9 +11,11 @@ fi
 
 export PATH=$HOME/.local/bin:$PATH
 
+set +e 
 gnome-extensions disable tiling-assistant@ubuntu.com
 gnome-extensions disable ubuntu-dock@ubuntu.com
 gnome-extensions disable ding@rastersoft.com
+set -e
 
 gum confirm "To install the extensions, please confirm"
 gum style --foreground 212 --border normal --border-foreground 212 --margin "1 2" --padding "2" "Installing Extensions"

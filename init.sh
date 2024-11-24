@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
+DISTROS=("Ubuntu" "Debian GU/Linux")
+
 CONFIG_DIR="./configs"
 THEME_DIR="./themes"
 
-if [ $(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=) = Ubuntu ]; then
-  eval "$(cat ~/.bashrc | tail +10)"
-fi
+for DISTRO in "${DISTROS[@]}"
+do    
+   if [ "$(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=)" = "$DISTRO" ]; then
+       eval "$(cat ~/.bashrc | tail +10)"
+    fi
+done
 
 user_path_string=$(sed '2!d' ./configs/bash/user_local_path)
 if ! grep -q "$user_path_string" ~/.bashrc; then
