@@ -11,6 +11,8 @@ THEME_DIR="${SCRIPT_DIR}/themes"
 for DISTRO in "${DISTROS[@]}"; do
   if [ "$(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=)" = "$DISTRO" ]; then
     eval "$(cat ~/.bashrc | tail +10)"
+    CURRENT_DISTRO="$DISTRO"
+    echo "Running insllater for $CURRENT_DISTRO"
   fi
 done
 
