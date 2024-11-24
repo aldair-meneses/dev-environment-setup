@@ -36,7 +36,7 @@ fi
 function init() {
 
   CHOICE=$(
-    gum choose "Install Essentials" "Setup Fonts" "Installing Apps" "Setup Lazyvim" \
+    gum choose "Install Essentials" "Setup Fonts" "Install Apps" "Setup Lazyvim" \
       "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings" \
       "Quit"
   )
@@ -83,9 +83,19 @@ function init() {
     init
   fi
 
-  if [ "$CHOICE" == "Installing Apps" ]; then
-    gum spin -s line --title "Installing Apps" -- sleep 1
-    for script in ./apps/*.sh; do source $script; done
+  if [ "$CHOICE" == "Install Apps" ]; then
+    INSTALLATION_METHOD=$(gum choose "Installing All" "Select an app to install")
+
+    if [ "$INSTALLATION_METHOD" == "Installing All" ]; then
+      gum spin -s line --title "Installing Apps" -- sleep 1
+
+      for script in ./apps/*.sh; do source $script; done
+    fi
+
+    if [ "$INSTALLATION_METHOD" == "Select an app to install" ]; then
+      APP_CHOICE=$(gum choose $(ls ./apps/*.sh | xargs -i echo {}))
+      source "$APP_CHOICE"
+    fi
     init
   fi
 
