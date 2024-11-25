@@ -108,7 +108,7 @@ function error_message() {
   gum style --foreground "#bf0000" "$1"
 }
 
-function error_handler()
+function error_handler() {
   error_message "An error ocurred during the execution of the script."
   init
 }
