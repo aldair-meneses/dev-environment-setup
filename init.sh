@@ -93,12 +93,24 @@ function init() {
     fi
 
     if [ "$INSTALLATION_METHOD" == "Select an app to install" ]; then
+
+      trap error_handler ERR
+
       APP_CHOICE=$(gum choose $(ls ./apps/*.sh | xargs -i echo {}))
       source "$APP_CHOICE"
     fi
     init
   fi
 
+}
+
+function error_message() {
+  gum style --foreground "#bf0000" "$1"
+}
+
+function error_handler()
+  error_message "An error ocurred during the execution of the script."
+  init
 }
 
 init
