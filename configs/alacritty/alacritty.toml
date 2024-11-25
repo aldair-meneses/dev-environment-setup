@@ -1,0 +1,26 @@
+import = [ 
+  "~/.config/alacritty/font.toml",
+]
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+program = "/bin/bash"
+args = ["--login", "-c", "zellij"]
+
+[window]
+decorations = "none"
+opacity = 0.95
+blur = true
+startup_mode = "Windowed"
+
+[window.padding]
+x = 10
+y = 8
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" }
+]
+
