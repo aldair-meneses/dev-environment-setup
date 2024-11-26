@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if command -v php -v &>/dev/null; then
+  gum style --foreground "#00FF9C" "PHP Is already installed"
+  continue
+fi
+
 gum spin -s line --title "Installing PHP and PHP Extensions" -- sleep 1
 
 sudo apt install apt-transport-https
