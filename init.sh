@@ -1,15 +1,18 @@
 #!/bin/bash
 set -e
 
-DISTROS=("Ubuntu" "Debian GU/Linux")
+DISTROS=("Ubuntu" "Debian GNU/Linux")
+
+DISTRO_NAME=$(source /etc/os-release && echo $NAME)
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 CONFIG_DIR="${SCRIPT_DIR}/configs"
 THEME_DIR="${SCRIPT_DIR}/themes"
+PROGAMMING_DIR="${SCRIPT_DIR}/programming"
 
 for DISTRO in "${DISTROS[@]}"; do
-  if [ "$(sed -n '/^NAME/p' /etc/os-release | tr -d \"NAME=)" = "$DISTRO" ]; then
+  if [ "$DISTRO_NAME" = "$DISTRO" ]; then
     eval "$(cat ~/.bashrc | tail +10)"
     CURRENT_DISTRO="$DISTRO"
     echo "Running installer for $CURRENT_DISTRO"
@@ -40,6 +43,8 @@ function init() {
       "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings" \
       "Quit"
   )
+
+  trap error_handler ERR
 
   if [ "$CHOICE" == "Quit" ]; then
     exit 0
@@ -93,8 +98,6 @@ function init() {
     fi
 
     if [ "$INSTALLATION_METHOD" == "Select an app to install" ]; then
-
-      trap error_handler ERR
 
       APP_CHOICE=$(gum choose $(ls ./apps/*.sh | xargs -i echo {}))
       source "$APP_CHOICE"
