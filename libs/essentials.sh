@@ -5,4 +5,4 @@ sudo apt install -y \
   libvips imagemagick libmagickwand-dev mupdf mupdf-tools \
   sqlite3 libsqlite3-0 plocate tree libegl1-mesa-dev cmake g++ \
   pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev \
-  libxkbcommon-dev python3
+  libxkbcommon-dev python3 scdoc gzip
