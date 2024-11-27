@@ -83,8 +83,30 @@ function init() {
   fi
 
   if [ "$CHOICE" == "Setup Progamming Languages" ]; then
+    LANGS=()
+
+    PROGAMMING_LANG_DIR="${PROGAMMING_DIR}/languages"
+
+    for LANG in "${PROGAMMING_LANG_DIR}"/*.sh; do
+      LANGS+=("$(basename "$LANG")")
+    done
+
+    readarray -t LANG_CHOICES < <(gum choose "${LANGS[@]}" --no-limit)
+
+    if [ "${#LANG_CHOICES[@]}" -eq 0 ]; then
+      gum style --foreground "#3D3BF3" "No languages selected"
+      echo "${LANG_CHOICES[@]}"
+      init
+    fi
+
+    echo -e "Languages selected:\n" | gum style --foreground "#3D3BF3" --margin "1 2" "${LANG_CHOICES[@]}"
+
     gum spin -s line --title "Installing Progamming Languages" -- sleep 1
-    for script in ./programming/languages/*.sh; do source $script; done
+
+    for LANG_CHOICE in "${LANG_CHOICES[@]}"; do
+      source "${PROGAMMING_LANG_DIR}/${LANG_CHOICE}"
+    done
+
     init
   fi
 
