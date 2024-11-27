@@ -21,7 +21,7 @@ if [ -n "$NEOVIM_CONFIG_PATH" ] && [ -d "$NEOVIM_CONFIG_PATH" ]; then
   mv "$NEOVIM_CONFIG_PATH"{,.bak}
 fi
 
-gum spin --spinner dot --title "Installing Lazygit" -- sleep 1
+gum spin --spinner dot --title "Installing Lazygit..." -- sleep 1
 
 source "$CURRENT_PATH"/deps/lazygit.sh
 
