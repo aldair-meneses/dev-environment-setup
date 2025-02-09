@@ -137,7 +137,7 @@ function init() {
       LANGS+=("$(basename "$LANG")")
     done
 
-    readarray -t LANG_CHOICES < <(gum choose "${LANGS[@]}" --no-limit)
+    LANG_CHOICES=($(gum choose "${LANGS[@]}" --no-limit))
 
     if [ "${#LANG_CHOICES[@]}" -eq 0 ]; then
       gum style --foreground "#3D3BF3" "No languages selected"
