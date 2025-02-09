@@ -2,6 +2,11 @@
 
 set -e
 
+if [ "$CURRENT_DISTRO" = "Pop!_OS" ]; then
+  gum style --foreground "#00FF9C" "Pop!_OS has a better alternative to Ulauncher. No need to install it."
+  return
+fi
+
 if [ "$CURRENT_DISTRO" = "Debian GU/Linux" ]; then
   sudo apt update && sudo apt install -y gnupg
   gpg --keyserver keyserver.ubuntu.com --recv 0xfaf1020699503176

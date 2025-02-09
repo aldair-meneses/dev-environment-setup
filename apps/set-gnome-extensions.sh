@@ -25,4 +25,3 @@ bash -c "gext install just-perfection-desktop@just-perfection"
 bash -c "gext install blur-my-shell@aunetx"
 bash -c "gext install space-bar@luchrioh"
 bash -c "gext install focus-changer@heartmire"
-

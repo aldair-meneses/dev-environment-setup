@@ -16,7 +16,7 @@ if [ "$CURRENT_DISTRO" = "Debian GU/Linux" ]; then
   sudo apt update
 fi
 
-if [ "$CURRENT_DISTRO" = "Ubuntu" ]; then
+if [ "$CURRENT_DISTRO" = "Ubuntu" ] || [ "$CURRENT_DISTRO" = "Pop!_OS" ]; then
   sudo add-apt-repository -y ppa:ondrej/php
   sudo apt update
 fi

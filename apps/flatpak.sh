@@ -1,8 +1,14 @@
 #!/bin/bash
 
 if ! command -v flatpak --version &>/dev/null; then
+
+  if [ "$CURRENT_DISTRO" = "Pop!_OS" ]; then
+    gum style --foreground "#00FF9C" "Pop!_OS has Flatpak pre-installed. No need to install it."
+    return
+  fi
+
   gum style --foreground "#00FF9C" "Installing Flatpak..."
-  echo "$CURRENT_DISTRO"
+
   if [ "$CURRENT_DISTRO" = "Ubuntu" ]; then
     sudo add-apt-repository ppa:flatpak/stable
     sudo apt update

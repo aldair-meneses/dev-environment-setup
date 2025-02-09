@@ -21,7 +21,7 @@ if [ "$CURRENT_DISTRO" = "Debian GU/Linux" ]; then
     sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 fi
 
-if [ "$CURRENT_DISTRO" = "Ubuntu" ]; then
+if [ "$CURRENT_DISTRO" = "Ubuntu" ] || [ "$CURRENT_DISTRO" = "Pop!_OS" ]; then
   sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
   sudo chmod a+r /etc/apt/keyrings/docker.asc
 
