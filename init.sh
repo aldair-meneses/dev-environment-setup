@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-DISTROS=("Ubuntu" "Debian GNU/Linux")
+DISTROS=("Ubuntu" "Debian GNU/Linux" "Pop!_OS")
 
 DISTRO_NAME=$(source /etc/os-release && echo $NAME)
 

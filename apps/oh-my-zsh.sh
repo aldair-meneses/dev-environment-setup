@@ -14,7 +14,6 @@ exit
 
 sudo apt install git zsh-syntax-highlighting zsh-autosuggestions fzf -y
 
-echo "$CONFIG_DIR"
 cp "$CONFIG_DIR/oh-my-zsh/.zshrc" "$HOME/.zshrc"
 cp "$CONFIG_DIR/oh-my-zsh/aliases.zsh" "$HOME/.oh-my-zsh/custom/aliases.zsh"
 
