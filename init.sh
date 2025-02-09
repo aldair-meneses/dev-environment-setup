@@ -41,18 +41,60 @@ function init() {
   CHOICE=$(
     gum choose "Install Essentials" "Setup Fonts" "Install Apps" "Setup Lazyvim" \
       "Setup Alacritty" "Setup Progamming Languages" "Setup Gnome Keybindings" \
-      "Quit"
+      "Setup Editors" "Quit"
   )
 
   trap error_handler ERR
 
-  if [ "$CHOICE" == "Quit" ]; then
-    exit 0
+  if [ "$CHOICE" == "Install Apps" ]; then
+    INSTALLATION_METHOD=$(gum choose "Installing All" "Select an app to install")
+
+    if [ "$INSTALLATION_METHOD" == "Installing All" ]; then
+      gum spin -s line --title "Installing Apps" -- sleep 1
+
+      for script in ./apps/*.sh; do source $script; done
+    fi
+
+    if [ "$INSTALLATION_METHOD" == "Select an app to install" ]; then
+
+      APP_CHOICE=$(gum choose $(ls ./apps/*.sh | xargs -i echo {}))
+      source "$APP_CHOICE"
+    fi
+    init
   fi
 
   if [ "$CHOICE" == "Install Essentials" ]; then
     gum spin -s line --title "Installing Essentials" -- sleep 1
     source ./libs/essentials.sh
+    init
+  fi
+
+  if [ "$CHOICE" == "Setup Editors" ]; then
+    EDITORS=()
+
+    EDITORS_DIR="${PROGAMMING_DIR}/editors"
+
+    for EDITOR in "${EDITORS_DIR}"/*.sh; do
+      EDITORS+=("$(basename "$EDITOR")")
+    done
+
+    EDITOR_CHOICES=($(gum choose "${EDITORS[@]}" --no-limit))
+
+    if [ "${#EDITOR_CHOICES[@]}" -eq 0 ]; then
+      gum style --foreground "#3D3BF3" "No editors selected"
+      init
+    fi
+
+    echo -e "Editors selected:\n" | gum style --foreground "#3D3BF3" --margin "1 2" "${EDITOR_CHOICES[@]}"
+    gum spin -s line --title "Setup Editors" -- sleep 0
+
+    echo "Setup Editors"
+
+    for EDITOR_CHOICE in "${EDITOR_CHOICES[@]}"; do
+      echo "$EDITOR_CHOICE"
+      source "${EDITORS_DIR}/${EDITOR_CHOICE}"
+    done
+
     init
   fi
 
@@ -76,6 +118,10 @@ function init() {
     init
   fi
 
+  if [ "$CHOICE" == "Quit" ]; then
+    exit 0
+  fi
+
   if [ "$CHOICE" == "Setup Gnome Keybindings" ]; then
     APP=alacritty
     gum confirm "Do you want to set Gnome Keybindings?" &&
@@ -95,7 +141,6 @@ function init() {
 
     if [ "${#LANG_CHOICES[@]}" -eq 0 ]; then
       gum style --foreground "#3D3BF3" "No languages selected"
-      echo "${LANG_CHOICES[@]}"
       init
     fi
 
@@ -109,24 +154,6 @@ function init() {
 
     init
   fi
-
-  if [ "$CHOICE" == "Install Apps" ]; then
-    INSTALLATION_METHOD=$(gum choose "Installing All" "Select an app to install")
-
-    if [ "$INSTALLATION_METHOD" == "Installing All" ]; then
-      gum spin -s line --title "Installing Apps" -- sleep 1
-
-      for script in ./apps/*.sh; do source $script; done
-    fi
-
-    if [ "$INSTALLATION_METHOD" == "Select an app to install" ]; then
-
-      APP_CHOICE=$(gum choose $(ls ./apps/*.sh | xargs -i echo {}))
-      source "$APP_CHOICE"
-    fi
-    init
-  fi
-
 }
 
 function error_message() {
