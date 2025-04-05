@@ -1,11 +1,12 @@
 #!/bin/bash
+
 set -e
 
 DISTROS=("Ubuntu" "Debian GNU/Linux" "Pop!_OS")
 
 DISTRO_NAME=$(source /etc/os-release && echo $NAME)
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${0}")" && pwd)"
 
 CONFIG_DIR="${SCRIPT_DIR}/configs"
 THEME_DIR="${SCRIPT_DIR}/themes"
@@ -13,7 +14,9 @@ PROGAMMING_DIR="${SCRIPT_DIR}/programming"
 
 for DISTRO in "${DISTROS[@]}"; do
   if [ "$DISTRO_NAME" = "$DISTRO" ]; then
-    eval "$(cat ~/.bashrc | tail +10)"
+	if [ -z "$ZSH_VERSION" ]; then
+		source ./configs/bash/user_local_path
+	fi
     CURRENT_DISTRO="$DISTRO"
     echo "Running installer for $CURRENT_DISTRO"
   fi
