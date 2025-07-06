@@ -1,32 +1,32 @@
-# Ubuntu pós instalação
-Descrição passo a passo do que faço logo após instalar o Ubuntu na minha máquina 
+# Debian/Ubuntu Post Installation (Gnome environment)
+This is a step by step that I use to setup my dev environment after a Ubuntu/Debian Based OS Fresh Installation.
 
-## Primeiros softwares e passos
-- Ative o focus follows mouse: ```gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'```
-- git: ```sudo apt install git```
-- vim ```sudo apt install vim``` 
-- Firefox: https://support.mozilla.org/en-US/kb/install-firefox-linux
-- Firefox icon: ```wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications```
-- Chrome: https://www.google.com/intl/pt-BR/chrome/
-- Instale o gerenciador de senha. 
+## First softwares and first steps
+- Active mouse focus follows: ```gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'```
+- git installation: ```sudo apt install git```
+- vim installation ```sudo apt install vim``` 
+- Firefox installation: https://support.mozilla.org/en-US/kb/install-firefox-linux
+- Add Firefox icon: ```wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications```
+- Chrome installation: https://www.google.com/intl/pt-BR/chrome/
+- Install some password manager. 
 - Code-insiders: https://code.visualstudio.com/insiders/ 
 - Symbol link para o code: ```sudo ln -s /usr/share/code-insiders/bin/code-insiders /usr/bin/code```
 - RocketChat: https://github.com/RocketChat/Rocket.Chat.Electron/releases
 
-## Crie um ssh para o novo sistema
-- Como criar: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+## Generate a ssh key
+- How to: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-## Remova softwares snap
-Use o comando ```sudo snap list``` para verificar quais softwares snaps estão instalados.
+## Remove snap softwares
+I don't use Snap software, so I use this command : ```sudo snap list``` to check which snap software are installed and the remove one by one.
 
-## Instalando o docker engine 
-Passo a passo para o Docker Engine: https://docs.docker.com/engine/install/ubuntu/
-Pós instalação do Docker Engine: https://docs.docker.com/engine/install/linux-postinstall/
+## Install Docker Engine
+Follow this how to Docker Engine: https://docs.docker.com/engine/install/ubuntu/
+After instal, follow this post Docker Engine installation: https://docs.docker.com/engine/install/linux-postinstall/
 
-## Configure as contas do seu navegador
-Utilize o comando ```firefox -p``` para pode adicionar o profile switcher e crie os perfís necessários.
+## Setup browser accounts
+Using this command: ```firefox -p``` will be add the profile switcher in the startup browser screen. Do it, and then, create the desired profiles.
 
-## Softwares que costumo utilizar
+## Softwares I usaully use
 - Flatpak: ```sudo apt install flatpak```
 - Curl: ```sudo apt install curl```
 - Discord: https://discord.com/
