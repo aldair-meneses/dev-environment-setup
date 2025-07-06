@@ -10,7 +10,7 @@ This is a step by step that I use to setup my dev environment after a Ubuntu/Deb
 - Chrome installation: https://www.google.com/intl/pt-BR/chrome/
 - Install some password manager. 
 - Code-insiders: https://code.visualstudio.com/insiders/ 
-- Symbol link para o code: ```sudo ln -s /usr/share/code-insiders/bin/code-insiders /usr/bin/code```
+- Create Code (Code Insiders) symbol link: ```sudo ln -s /usr/share/code-insiders/bin/code-insiders /usr/bin/code```
 - RocketChat: https://github.com/RocketChat/Rocket.Chat.Electron/releases
 
 ## Generate a ssh key
